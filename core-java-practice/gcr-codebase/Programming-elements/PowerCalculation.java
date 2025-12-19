@@ -9,5 +9,7 @@ public class PowerCalculation {
             result *= base;
         }
         System.out.println(base + " raised to the power of " + exponent + " is: " + result);
+
+        scanner.close();
     }
 }
