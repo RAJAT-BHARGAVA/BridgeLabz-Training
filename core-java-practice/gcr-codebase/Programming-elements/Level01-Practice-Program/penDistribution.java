@@ -7,3 +7,4 @@ public class PenDistribution {
         System.out.println("The Pen Per Student is " + pensPerStudent + " and the remaining pens not distributed is " + remainingPens);
     }
 }
+//chked
