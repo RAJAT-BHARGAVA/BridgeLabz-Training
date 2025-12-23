@@ -6,6 +6,6 @@
 -**17-Dec-2025 (Wednesday):**  Created a folder named programming-elements inside gcr-codebase and did some basic programs.<br/>
 -**18-Dec-2025 (Thursday):** Studied basic java documentaion and submitted level 1 and level 2 problems of prpgramming elements.<br/>
 -**19-Dec-2025 (Friday):**  Studied control flow documentation. Solved and submitted control flow practice problems.<br/>`
--**20-Dec-2025 (Friday):**  Studied String documentation. Solved and practice problems.<br/>`
+-**20-Dec-2025 (Saturday):**  Studied String documentation. Solved and practice problems.<br/>`
 ## Week 2
--**22-Dec-2025 (Friday):**  Studied String documentation. Solved and submitted String practice problems. and solved Scenerio based Questions and Sumbmitted problems <br/>`
+-**22-Dec-2025 (Monday):**  Studied String documentation. Solved and submitted String practice problems. and solved Scenerio based Questions and Sumbmitted problems <br/>`
