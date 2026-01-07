@@ -9,6 +9,10 @@ public class AddTwoMatrix{
         for(int i =0 ;i<n ;i++){
             for(int j =0 ;j<m ; j++){
                 arr1[i][j]=sc.nextInt();
+            }
+        }
+        for(int i =0 ;i<n ;i++){
+            for(int j =0 ;j<m ; j++){
                 arr2[i][j]=sc.nextInt();
             }
         }
@@ -16,10 +20,15 @@ public class AddTwoMatrix{
         // adding 
         for (int i =0 ;i<n ;i++){
             for(int j=0 ; j< m ;j++){
-                result = arr1[i][j]+arr2[i][j];
+                result[i][j] = arr1[i][j]+arr2[i][j];
             }
 
             
+        }
+        for(int i =0 ;i<n ;i++){
+            for(int j =0 ;j<m ; j++){
+                System.out.println(result[i][j]);
+            }
         }
     }
 }
