@@ -1,94 +1,83 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class LexicalTwist {
-
-    public static boolean isValidWord(String word) {
-        return !word.contains(" ");
-    }
-
-    public static boolean isVowel(char ch) {
-        return "AEIOUaeiou".indexOf(ch) != -1;
-    }
-
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter the first word");
-        String first = sc.nextLine();
-
-        if (!isValidWord(first)) {
-            System.out.println(first + " is an invalid word");
+        String firstWord = sc.nextLine();
+        
+        // Validation for First Word
+        if (firstWord.trim().contains(" ")) {
+            System.out.println(firstWord + " is an invalid word");
             return;
         }
 
         System.out.println("Enter the second word");
-        String second = sc.nextLine();
+        String secondWord = sc.nextLine();
 
-        if (!isValidWord(second)) {
-            System.out.println(second + " is an invalid word");
+        // Validation for Second Word
+        if (secondWord.trim().contains(" ")) {
+            System.out.println(secondWord + " is an invalid word");
             return;
         }
 
-        // Check reverse (case insensitive)
-        String reversedFirst =
-                new StringBuilder(first).reverse().toString();
+        // Logic 1: Check if second word is reversed version of first (Case Insensitive)
+        String reversedFirst = new StringBuilder(firstWord).reverse().toString();
 
-        if (reversedFirst.equalsIgnoreCase(second)) {
-
-            // Reverse → lowercase → replace vowels
-            String result = reversedFirst.toLowerCase()
-                    .replaceAll("[aeiou]", "@");
-
-            System.out.println(result);
-
+        if (reversedFirst.equalsIgnoreCase(secondWord)) {
+            // Step: Reverse first, lowercase it, replace vowels with '@'
+            String transformed = reversedFirst.toLowerCase().replaceAll("[aeiouAEIOU]", "@");
+            System.out.println(transformed);
         } else {
-
-            // Combine and uppercase
-            String combined = (first + second).toUpperCase();
-
-            int vowels = 0, consonants = 0;
-
-            for (char ch : combined.toCharArray()) {
-                if (Character.isLetter(ch)) {
-                    if (isVowel(ch))
-                        vowels++;
-                    else
-                        consonants++;
+            // Logic 2: Combine and analyze
+            String combined = (firstWord + secondWord).toUpperCase();
+            int vowelsCount = 0;
+            int consonantsCount = 0;
+            
+            String vowelsList = "AEIOU";
+            
+            for (char c : combined.toCharArray()) {
+                if (Character.isLetter(c)) {
+                    if (vowelsList.indexOf(c) != -1) {
+                        vowelsCount++;
+                    } else {
+                        consonantsCount++;
+                    }
                 }
             }
 
-            if (vowels > consonants) {
-                LinkedHashSet<Character> set = new LinkedHashSet<>();
-                for (char ch : combined.toCharArray()) {
-                    if (isVowel(ch))
-                        set.add(ch);
-                }
-                printFirstTwo(set);
-
-            } else if (consonants > vowels) {
-                LinkedHashSet<Character> set = new LinkedHashSet<>();
-                for (char ch : combined.toCharArray()) {
-                    if (Character.isLetter(ch) && !isVowel(ch))
-                        set.add(ch);
-                }
-                printFirstTwo(set);
-
+            if (vowelsCount > consonantsCount) {
+                printFirstTwoUnique(combined, true);
+            } else if (consonantsCount > vowelsCount) {
+                printFirstTwoUnique(combined, false);
             } else {
                 System.out.println("Vowels and consonants are equal");
             }
         }
     }
 
-    private static void printFirstTwo(Set<Character> set) {
-        int count = 0;
-        StringBuilder sb = new StringBuilder();
-        for (char ch : set) {
-            sb.append(ch);
-            count++;
-            if (count == 2)
-                break;
+    // Helper method to extract first 2 unique vowels or consonants
+    public static void printFirstTwoUnique(String word, boolean wantVowels) {
+        String vowels = "AEIOU";
+        Set<Character> seen = new LinkedHashSet<>();
+        
+        for (char c : word.toCharArray()) {
+            boolean isVowel = vowels.indexOf(c) != -1;
+            if (wantVowels && isVowel) {
+                seen.add(c);
+            } else if (!wantVowels && !isVowel && Character.isLetter(c)) {
+                seen.add(c);
+            }
+            
+            if (seen.size() == 2) break;
         }
-        System.out.println(sb.toString());
+        
+        for (Character ch : seen) {
+            System.out.print(ch);
+        }
+        System.out.println();
     }
 }
