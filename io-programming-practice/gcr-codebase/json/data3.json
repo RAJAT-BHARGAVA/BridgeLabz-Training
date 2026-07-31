@@ -1,9 +1,0 @@
-{
-  "name": "Alice",
-  "age": 25,
-  "address": {
-    "city": "New York",
-    "zip": "10001"
-  },
-  "skills": ["Java", "SQL"]
-}
