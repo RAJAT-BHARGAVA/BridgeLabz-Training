@@ -3,7 +3,7 @@ USE health_clinic_db;
 -- Drop Day 1 basic tables to rebuild normalized version
 DROP TABLE IF EXISTS patients;
 DROP TABLE IF EXISTS doctors;
-
+DROP TABLE IF EXISTS appointments;
 -- 1. Patients (3NF compliant)
 CREATE TABLE patients (
 patient_id INT AUTO_INCREMENT PRIMARY KEY,
