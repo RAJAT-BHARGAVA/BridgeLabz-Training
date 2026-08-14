@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingsApp.service;
 
+import com.bridgelabz.greetingsApp.DTO.GreetingResponseDTO;
 import com.bridgelabz.greetingsApp.entity.GreetingApp;
 import com.bridgelabz.greetingsApp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,19 @@ public class GreetingService {
     public void delete(Long id){
           greetingRepository.deleteById(id);
 
+    }
+
+
+    public final GreetingRepository greetingRepository;
+
+    public GreetingService(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
+
+    public GreetingResponseDTO createResponseDTO(GreetingApp greetingReq){
+        GreetingApp greetingApp = new GreetingApp();
+        greetingApp.setMessage(greetingReq.getMessage());
+        return null ;
     }
 
 }
